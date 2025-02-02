@@ -154,6 +154,13 @@ async function main() {
 
   const sem = new Semaphore(8);
   const links = page.mainFrame.document.querySelectorAll(".article-container.main-article-body .Rich-text > ul > li > a[href^='article/']");
+  console.info(`Found ${links.length} films`);
+
+  if (!links.length) {
+    console.error(page.content);
+    throw new Error("No film links found");
+  }
+
   await Promise.all(Array.from(links, async (link) => {
     await sem.acquire();
     let url = link.href;
