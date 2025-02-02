@@ -1,5 +1,7 @@
 # Unofficial ical feed for BFI
 
+**Unfortunately, this doesn't currently worked since the Github actions runner is being blocked by Cloudflare.**
+
 Let's you add https://whatson.bfi.org.uk/ to your calendar.
 
 Automatically updated every day through the magic of Github Actions.
