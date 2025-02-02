@@ -148,29 +148,6 @@ async function main() {
     }
   });
 
-  browser.defaultContext.cookieContainer.addCookies([
-    {
-      key: "__cf_bm",
-      value: "onZp4e2BOzBP18_19yq_2ZMdr0AcnVLtu9Bub1cvVk4-1738532987-1.0.1.1-YyWrL6Rjx1IBpqHn2U0BUXDuWOvSKHD.55PIMvGnyCAKdBWiqHj.eWB1tT.U4ZGc0Vime2B8VuBcTbHO1ZXS1Q",
-    },
-    {
-      key: "_cfuvid",
-      value: "l_ifIkz8.1EIBwICojwKLzFKgwPPR7u0sQBU1_K_Cp0-1738530042274-0.0.1.1-604800000",
-    },
-    {
-      key: "ApplicationGatewayAffinity",
-      value: "034f218b4cdf42a48e71c873a076683e",
-    },
-    {
-      key: "ApplicationGatewayAffinityCORS",
-      value: "034f218b4cdf42a48e71c873a076683e",
-    },
-    {
-      key: "ASPSESSIONIDCGARSDAD",
-      value: "KKGJABJDJDPLEBDACONMPFJC",
-    }
-  ]);
-
   const page = browser.newPage();
   await page.goto("https://whatson.bfi.org.uk/Online/default.asp?BOparam::WScontent::loadArticle::permalink=filmsindex");
   await page.waitUntilComplete();
