@@ -38,6 +38,12 @@ jobs:
           oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
           args: "--exit-node=${{ secrets.TAILSCALE_EXIT_NODE }}"
           tags: tag:github-actions
+      - name: Verify Tailscale
+        run: |
+          echo "Available exit nodes:"
+          tailscale status | grep 'exit node'
+          echo "IP from ifconfig.me:"
+          curl -s https://ifconfig.me
       - run: npm run generate gh-pages/bfi.ics
       - run: npm install --no-save markdown-to-html-cli
       - run: npx markdown-to-html --no-corners --output gh-pages/index.html
