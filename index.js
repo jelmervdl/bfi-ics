@@ -131,18 +131,6 @@ async function scrape(page, callback) {
     return `https://whatson.bfi.org.uk/Online/default.asp?sToken=${encodeURIComponent(sToken)}&BOset::WScontent::SearchResultsInfo::current_page=${parseInt(current_page) + 1}&doWork::WScontent::getPage=&BOparam::WScontent::getPage::article_id=${encodeURIComponent(articleId)}`;
 }
 
-async function whatismyip() {
-  const browser = new Browser();
-  try {
-    const page = browser.newPage();
-    await page.goto("https://ifconfig.me/");
-    await page.waitUntilComplete();
-    return page.mainFrame.document.querySelector("#ip_address").textContent.trim();
-  } finally {
-    await browser.close();
-  }
-}
-
 async function main() {
   const calendar = ical({
     name: "BFI"
@@ -171,9 +159,6 @@ async function main() {
       }
     },
   });
-
-  // For debugging
-  console.log({ ip: await whatismyip() });
 
   const page = browser.newPage();
   await page.goto("https://whatson.bfi.org.uk/Online/default.asp?BOparam::WScontent::loadArticle::permalink=filmsindex");
