@@ -146,9 +146,17 @@ async function main() {
         disableChildFrameNavigation: true,
       },
       navigator: {
-        userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0",
+        userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:138.0) Gecko/20100101 Firefox/138.0",
         maxTouchPoints: 4,
       },
+      fetch: {
+        interceptor: {
+          beforeAsyncRequest: async ({request, window}) => {
+            // Necessary for Cloudfront?
+            request.headers.set("Pragma", "no-cache");
+          }
+        }
+      }
     },
   });
 
