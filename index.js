@@ -67,7 +67,7 @@ const months = [
   "July",
   "August",
   "September",
-  "Oktober",
+  "October",
   "November",
   "December",
 ].reduce((acc, month, index) => ({ ...acc, [month]: index }), {});
@@ -81,13 +81,17 @@ function parseDate(str) {
   const hour = parseInt(h);
   const minute = parseInt(m);
   // console.log({ today, day, time, date, monthIdx, year, hour, minute });
-  return new Date(
+  const obj = new Date(
     year,
     monthIdx,
     date,
     hour,
     minute
   );
+  if (isNaN(obj)) {
+    throw new Error(`Could not parse date ${str}`);
+  }
+  return obj;
 }
 
 async function scrape(page, callback) {
